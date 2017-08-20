@@ -11,21 +11,21 @@ const pump = require('pump'); //*
 gulp.task('serve', ['sass'], function() {
 
     browserSync.init({
-        server: "./app"
+        server: "./web-app"
     });
 
-    gulp.watch("./app/js/*.js", ['comprimir']); //Para minificar JS
+    gulp.watch("./web-app/js/*.js", ['comprimir']); //Para minificar JS
     gulp.watch("./scss/**/*.scss", ['sass']); //Para SASS
-    gulp.watch("./app/*.html").on('change', browserSync.reload); //Para HTML
-    gulp.watch("./app/js/*.js").on('change', browserSync.reload); //Para JS
+    gulp.watch("./web-app/*.html").on('change', browserSync.reload); //Para HTML
+    gulp.watch("./web-app/js/*.js").on('change', browserSync.reload); //Para JS
 });
 
 // UGLIFY COMPRIMIR JS
 gulp.task('comprimir', function(cb) {
     pump([
-            gulp.src('./app/js/*.js'),
+            gulp.src('./web-app/js/*.js'),
             uglify(),
-            gulp.dest('./app/js/dist')
+            gulp.dest('./web-app/js/dist')
         ],
         cb
     );
@@ -37,7 +37,7 @@ gulp.task('sass', function() {
         .pipe(sass({ outputStyle: 'compact' }).on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(concat('main.min.css'))
-        .pipe(gulp.dest('./app/css'))
+        .pipe(gulp.dest('./web-app/css'))
         .pipe(browserSync.stream());
 });
 

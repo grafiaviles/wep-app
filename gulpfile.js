@@ -34,7 +34,7 @@ gulp.task('comprimir', function(cb) {
 // Sass Compile
 gulp.task('sass', function() {
     return gulp.src('./scss/**/*.scss')
-        .pipe(sass({ outputStyle: 'compact' }))
+        .pipe(sass({ outputStyle: 'compact' }).on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(concat('main.min.css'))
         .pipe(gulp.dest('./app/css'))

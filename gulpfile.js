@@ -17,6 +17,7 @@ gulp.task('serve', ['sass'], function() {
     gulp.watch("./web-app/js/*.js", ['comprimir']); //Para minificar JS
     gulp.watch("./scss/**/*.scss", ['sass']); //Para SASS
     gulp.watch("./web-app/*.html").on('change', browserSync.reload); //Para HTML
+    gulp.watch("./web-app/*.php").on('change', browserSync.reload); //Para PHP
     gulp.watch("./web-app/js/*.js").on('change', browserSync.reload); //Para JS
 });
 

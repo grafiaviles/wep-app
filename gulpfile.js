@@ -21,6 +21,7 @@ gulp.task('serve', ['sass', 'javascript', 'html'], function() {
     gulp.watch('./*.html', ['html']); //Observa la tarea minificar html
 });
 
+
 // MINIFICADOR HTML
 gulp.task('html', function() {
     return gulp.src('./*.html')
